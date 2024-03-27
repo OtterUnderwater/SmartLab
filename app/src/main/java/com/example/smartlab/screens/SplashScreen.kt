@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.smartlab.R
+import com.example.smartlab.objects.CachePreferences
 import com.example.smartlab.objects.RoutesScreens
 import com.example.smartlab.ui.theme.SmartLabTheme
 import kotlinx.coroutines.delay
@@ -36,11 +37,21 @@ fun SplashScreen(navController: NavHostController?) {
        создания компонента без блокирования главного потока пользовательского интерфейса.*/
         LaunchedEffect(key1 = true) {
             delay(1500L)
-            navController!!.navigate(RoutesScreens.LOGIN) {
-                //удаляет страницу, чтобы не было возможности вернуться
-                popUpTo(RoutesScreens.SPLASH)
-                {
-                    inclusive = true
+            //Проверяем PrefManager (Кэш приложения)
+            // и в зависимости от статуса пользователя выбираем какой экран ему показывать
+            if(CachePreferences.status == 0){
+                navController!!.navigate(RoutesScreens.ONBOARD) {
+                    //удаляет экран, чтобы не было возможности вернуться
+                    popUpTo(RoutesScreens.SPLASH) {
+                        inclusive = true
+                    }
+                }
+            }
+            if (CachePreferences.status == 1){
+                navController!!.navigate(RoutesScreens.LOGIN) {
+                    popUpTo(RoutesScreens.SPLASH) {
+                        inclusive = true
+                    }
                 }
             }
         }
@@ -78,17 +89,16 @@ fun SplashScreen(navController: NavHostController?) {
                     )
             ) {
                 Image(
-                    painter = painterResource(R.drawable.logosmartlab),
+                    painter = painterResource(R.drawable.logo_smart_lab),
                     contentDescription = "namelogo",
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxSize(1f)
                         .padding(50.dp)
                 )
             }
         }
     }
 }
-
 
 /*Для Preview*/
 @Preview(showBackground = true)

@@ -5,5 +5,7 @@ package com.example.smartlab.objects
 object RoutesScreens {
     //Константы называются капсом
     const val SPLASH = "splashScreen";
+    const val ONBOARD = "onBoard";
     const val LOGIN = "logIn";
+
 }

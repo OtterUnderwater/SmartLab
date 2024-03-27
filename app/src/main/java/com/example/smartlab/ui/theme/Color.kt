@@ -8,3 +8,8 @@ val LightPrimaryColor = Color(0xFF1A6FEE)
 
 // Цвета для темной темы
 val DarkPrimaryColor = Color(0xFF1A6FEE)
+
+
+// Общие цвета без тем
+val GrayColor = Color(0xFF939396)
+val GreenColor = Color(0xFF00B712)
