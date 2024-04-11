@@ -7,5 +7,5 @@ object RoutesScreens {
     const val SPLASH = "splashScreen";
     const val ONBOARD = "onBoard";
     const val LOGIN = "logIn";
-
+    const val CODEEMAIL = "inputCodeFromEmail";
 }

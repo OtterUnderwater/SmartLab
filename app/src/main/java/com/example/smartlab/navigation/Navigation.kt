@@ -5,6 +5,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.smartlab.objects.RoutesScreens
+import com.example.smartlab.screens.InputCodeFromEmail
+import com.example.smartlab.screens.LogIn
 import com.example.smartlab.screens.OnBoard
 import com.example.smartlab.screens.SplashScreen
 
@@ -26,8 +28,11 @@ fun Navigation() {
         composable(RoutesScreens.ONBOARD) {
             OnBoard(navController)
         }
-       /* composable(RoutesScreens.LOGIN) {
+        composable(RoutesScreens.LOGIN) {
             LogIn(navController)
-        }*/
+        }
+        composable(RoutesScreens.CODEEMAIL) {
+            InputCodeFromEmail(navController)
+        }
     }
 }

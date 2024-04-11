@@ -1,0 +1,140 @@
+package com.example.smartlab.screens
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme.colorScheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.smartlab.objects.RoutesScreens
+import com.example.smartlab.ui.theme.GrayBorderColor
+import com.example.smartlab.ui.theme.LightGrayColor
+import com.example.smartlab.ui.theme.SmartLabTheme
+
+@Composable
+fun LogIn(navHostController: NavHostController?) {
+    //rememberSaveable сохраняет значение между перезапусками приложения
+    //mutableStateOf() создает изменяемое состояние с нач значением
+    val email = rememberSaveable { mutableStateOf("") }
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxSize(1f)
+            .padding(20.dp, 100.dp)
+    )
+    {
+        Column(modifier = Modifier.weight(1f))
+        {
+            Text(
+                modifier = Modifier.fillMaxWidth(1f),
+                text = "✋ Добро пожаловать!",
+                fontWeight = FontWeight.Bold, fontSize = 24.sp
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .padding(top = 23.dp),
+                text = "Войдите, чтобы пользоваться функциями приложения", fontSize = 15.sp
+            )
+        }
+        Column(modifier = Modifier.weight(1f))
+        {
+
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .padding(bottom = 5.dp),
+                text = "Вход по E-mail", fontSize = 14.sp, color = Color.Gray
+            )
+            OutlinedTextField(
+                value = email.value,
+                onValueChange = { newText -> email.value = newText },
+                placeholder = {Text(
+                    text = "example@mail",
+                    style = TextStyle(color = Color.Gray))
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
+                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                shape = RoundedCornerShape(10.dp),
+                maxLines = 1,
+                singleLine = true
+            )
+            Button(
+                onClick = { navHostController!!.navigate(RoutesScreens.CODEEMAIL) },
+                //Кнопка не активна пока не ввели email
+                enabled = email.value.isNotEmpty(),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    disabledContainerColor = Color(0xFFC9D4FB),
+                    containerColor = colorScheme.primary
+                ),
+                modifier = Modifier
+                    .padding(top = 30.dp)
+                    .height(60.dp)
+                    .fillMaxWidth()
+            )
+            {
+                Text(text = "Далее", fontSize = 17.sp, color = Color.White)
+            }
+        }
+        Column(
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.weight(2f)
+        ) {
+            Text(
+                text = "Или войдите с помощью",
+                fontSize = 15.sp,
+                color = Color.Gray,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .height(60.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White
+                ),
+                border = BorderStroke(
+                    1.dp, color = Color(0xFFEBEBEB)
+                )
+            ) {
+                Text(text = "Войти с Яндекс", fontSize = 17.sp, color = Color.Black)
+            }
+        }
+    }
+}
+
+/*Для Preview*/
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    SmartLabTheme {
+        LogIn(null)
+    }
+}

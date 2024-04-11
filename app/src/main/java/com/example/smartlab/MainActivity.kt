@@ -1,4 +1,4 @@
-package com.example.smartlab.screens
+package com.example.smartlab
 
 import android.content.Context
 import android.os.Bundle
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
             SmartLabTheme {
                 //Передает контекст в CachePreferences!!
                 CachePreferences.init(LocalContext.current)
-               Surface(
+                Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
