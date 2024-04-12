@@ -36,7 +36,7 @@ import com.example.smartlab.ui.theme.SmartLabTheme
 fun LogIn(navHostController: NavHostController?) {
     //rememberSaveable сохраняет значение между перезапусками приложения
     //mutableStateOf() создает изменяемое состояние с нач значением
-    val email = rememberSaveable { mutableStateOf("") }
+    var email = rememberSaveable { mutableStateOf("") }
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
