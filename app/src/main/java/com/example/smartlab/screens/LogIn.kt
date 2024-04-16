@@ -16,8 +16,10 @@ import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,9 +36,11 @@ import com.example.smartlab.ui.theme.SmartLabTheme
 
 @Composable
 fun LogIn(navHostController: NavHostController?) {
-    //rememberSaveable сохраняет значение между перезапусками приложения
+    //remember сохраняет значение во время перерисовки экрана
+    //rememberSaveable сохраняет состояние еще и при перезапуске приложения
     //mutableStateOf() создает изменяемое состояние с нач значением
-    var email = rememberSaveable { mutableStateOf("") }
+    //пишу by вместо = чтобы вместо email.value писать email
+    var email by rememberSaveable { mutableStateOf("") }
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -68,8 +72,8 @@ fun LogIn(navHostController: NavHostController?) {
                 text = "Вход по E-mail", fontSize = 14.sp, color = Color.Gray
             )
             OutlinedTextField(
-                value = email.value,
-                onValueChange = { newText -> email.value = newText },
+                value = email,
+                onValueChange = { newText -> email = newText },
                 placeholder = {Text(
                     text = "example@mail",
                     style = TextStyle(color = Color.Gray))
@@ -85,7 +89,7 @@ fun LogIn(navHostController: NavHostController?) {
             Button(
                 onClick = { navHostController!!.navigate(RoutesScreens.CODEEMAIL) },
                 //Кнопка не активна пока не ввели email
-                enabled = email.value.isNotEmpty(),
+                enabled = email.isNotEmpty(),
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
                     disabledContainerColor = Color(0xFFC9D4FB),

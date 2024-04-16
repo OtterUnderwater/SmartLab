@@ -8,5 +8,7 @@ object RoutesScreens {
     const val ONBOARD = "onBoard";
     const val LOGIN = "logIn";
     const val CODEEMAIL = "inputCodeFromEmail";
+    const val CREATEPASSWORD = "createPassword";
+    const val CREATEPATIENTCARD = "creatingPatientCard";
     const val HOMEANALYSES = "homeAnalyses";
 }
