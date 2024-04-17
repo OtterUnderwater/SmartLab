@@ -33,9 +33,10 @@ import com.example.smartlab.objects.RoutesScreens
 import com.example.smartlab.ui.theme.GrayBorderColor
 import com.example.smartlab.ui.theme.LightGrayColor
 import com.example.smartlab.ui.theme.SmartLabTheme
+import com.example.smartlab.viewModel.ViewModelMain
 
 @Composable
-fun LogIn(navHostController: NavHostController?) {
+fun LogIn(navHostController: NavHostController?, viewModel: ViewModelMain?) {
     //remember сохраняет значение во время перерисовки экрана
     //rememberSaveable сохраняет состояние еще и при перезапуске приложения
     //mutableStateOf() создает изменяемое состояние с нач значением
@@ -87,7 +88,10 @@ fun LogIn(navHostController: NavHostController?) {
                 singleLine = true
             )
             Button(
-                onClick = { navHostController!!.navigate(RoutesScreens.CODEEMAIL) },
+                onClick = {
+                    viewModel!!.sendCodeToEmail(email)
+                    navHostController!!.navigate(RoutesScreens.CODEEMAIL)
+                          },
                 //Кнопка не активна пока не ввели email
                 enabled = email.isNotEmpty(),
                 shape = RoundedCornerShape(10.dp),
@@ -139,6 +143,6 @@ fun LogIn(navHostController: NavHostController?) {
 @Composable
 private fun Preview() {
     SmartLabTheme {
-        LogIn(null)
+        LogIn(null, null)
     }
 }

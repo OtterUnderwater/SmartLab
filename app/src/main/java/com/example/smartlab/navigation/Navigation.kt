@@ -12,11 +12,12 @@ import com.example.smartlab.screens.InputCodeFromEmail
 import com.example.smartlab.screens.LogIn
 import com.example.smartlab.screens.OnBoard
 import com.example.smartlab.screens.SplashScreen
+import com.example.smartlab.viewModel.ViewModelMain
 
 /*Класс для перемещения по страницам
 * В данном класе прописываются все траницы и их путь*/
 @Composable
-fun Navigation() {
+fun Navigation(viewModel: ViewModelMain) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,//контроллер реагирующий и отвечающий за перемещения
@@ -32,7 +33,7 @@ fun Navigation() {
             OnBoard(navController)
         }
         composable(RoutesScreens.LOGIN) {
-            LogIn(navController)
+            LogIn(navController, viewModel)
         }
         composable(RoutesScreens.CODEEMAIL) {
             InputCodeFromEmail(navController)
