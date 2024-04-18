@@ -89,7 +89,7 @@ fun LogIn(navHostController: NavHostController?, viewModel: ViewModelMain?) {
             )
             Button(
                 onClick = {
-                    viewModel!!.sendCodeToEmail(email)
+                    viewModel!!.sendCodeToEmail(email) //запрос к апи
                     navHostController!!.navigate(RoutesScreens.CODEEMAIL)
                           },
                 //Кнопка не активна пока не ввели email

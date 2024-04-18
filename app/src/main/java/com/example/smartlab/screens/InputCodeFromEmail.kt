@@ -15,7 +15,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -33,10 +32,10 @@ import com.example.smartlab.ui.theme.GrayBorderColor
 import com.example.smartlab.ui.theme.LightGrayColor
 import com.example.smartlab.ui.theme.SmartLabTheme
 import com.example.smartlab.ui.theme.Typography
-
+import com.example.smartlab.viewModel.ViewModelMain
 
 @Composable
-fun InputCodeFromEmail(navHostController: NavHostController?) {
+fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewModelMain?) {
     //mutableStateOf() создает изменяемое состояние с нач значением
     var code: MutableList<String> = remember { mutableStateListOf("", "", "", "") }
     val focusManager = LocalFocusManager.current
@@ -131,7 +130,7 @@ fun InputCodeFromEmail(navHostController: NavHostController?) {
                     {
                         code[3] = newText
                         moveFocusToNextField(3)
-                        navHostController!!.navigate(RoutesScreens.CREATEPASSWORD)
+                        viewModel!!.checkCodeAndEmail(code, navHostController!!) //запрос к апи
                     }
                 },
                 modifier = Modifier
@@ -153,7 +152,6 @@ fun InputCodeFromEmail(navHostController: NavHostController?) {
             text = "Отправить код повторно можно будет через 59 секунд",
             fontSize = 15.sp, color = Color.Gray
         )
-        Log.d("Введенный код", code.joinToString())
     }
 }
 
@@ -162,6 +160,6 @@ fun InputCodeFromEmail(navHostController: NavHostController?) {
 @Composable
 private fun Preview() {
     SmartLabTheme {
-        InputCodeFromEmail(null)
+        InputCodeFromEmail(null, null)
     }
 }

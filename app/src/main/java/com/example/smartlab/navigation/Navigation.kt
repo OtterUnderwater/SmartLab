@@ -36,7 +36,7 @@ fun Navigation(viewModel: ViewModelMain) {
             LogIn(navController, viewModel)
         }
         composable(RoutesScreens.CODEEMAIL) {
-            InputCodeFromEmail(navController)
+            InputCodeFromEmail(navController, viewModel)
         }
         composable(RoutesScreens.CREATEPASSWORD) {
             CreatePassword(navController)
