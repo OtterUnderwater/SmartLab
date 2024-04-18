@@ -1,6 +1,7 @@
 package com.example.smartlab.api
 
-import kotlinx.coroutines.flow.Flow
+import com.example.smartlab.models.Catalog
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -13,4 +14,7 @@ interface Api {
 
     @POST("api/SignIn")
     suspend fun signIn(@Header("User-email") email: String, @Header("User-code") code: String):String
+
+    @GET("api/Catalog")
+    suspend fun getCatalog(): List<Catalog>
 }

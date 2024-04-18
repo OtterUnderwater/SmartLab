@@ -40,6 +40,7 @@ fun OnBoard(navController: NavHostController?) {
                     // в преференсе и переходим сл окно
                     CachePreferences.status = 1
                     navController!!.navigate(RoutesScreens.LOGIN){
+                        //Удаляет экран чтобы запретить к нему возвращаться
                         popUpTo(RoutesScreens.ONBOARD) {
                             inclusive = true
                         }

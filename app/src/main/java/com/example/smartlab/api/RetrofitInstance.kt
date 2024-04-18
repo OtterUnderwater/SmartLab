@@ -1,7 +1,6 @@
 package com.example.smartlab.api
 
 import com.example.smartlab.objects.UrlData
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

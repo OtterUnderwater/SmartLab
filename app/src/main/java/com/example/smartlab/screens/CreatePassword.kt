@@ -2,6 +2,7 @@ package com.example.smartlab.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.smartlab.objects.CachePreferences
 import com.example.smartlab.objects.RoutesScreens
 import com.example.smartlab.ui.theme.GrayBorderColor
 import com.example.smartlab.ui.theme.GrayColor
@@ -41,7 +43,7 @@ import com.example.smartlab.ui.theme.SmartLabTheme
 import com.example.smartlab.ui.theme.Typography
 
 @Composable
-fun CreatePassword(navHostController: NavHostController?) {
+fun CreatePassword(navController: NavHostController?) {
     var password = rememberSaveable { mutableStateOf("") }
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
@@ -53,7 +55,14 @@ fun CreatePassword(navHostController: NavHostController?) {
         Text(
             textAlign = TextAlign.End,
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .clickable {
+                    navController!!.navigate(RoutesScreens.CREATE_PATIENT_CARD){
+                        popUpTo(RoutesScreens.CREATE_PASSWORD) {
+                            inclusive = true
+                        }
+                    }
+                },
             text = "Пропустить",
             color = colorScheme.primary
         )

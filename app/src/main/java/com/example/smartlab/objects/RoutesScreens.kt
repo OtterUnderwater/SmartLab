@@ -7,8 +7,8 @@ object RoutesScreens {
     const val SPLASH = "splashScreen";
     const val ONBOARD = "onBoard";
     const val LOGIN = "logIn";
-    const val CODEEMAIL = "inputCodeFromEmail";
-    const val CREATEPASSWORD = "createPassword";
-    const val CREATEPATIENTCARD = "creatingPatientCard";
-    const val HOMEANALYSES = "homeAnalyses";
+    const val CODE_EMAIL = "inputCodeFromEmail";
+    const val CREATE_PASSWORD = "createPassword";
+    const val CREATE_PATIENT_CARD = "creatingPatientCard";
+    const val HOME_ANALYSES = "homeAnalyses";
 }

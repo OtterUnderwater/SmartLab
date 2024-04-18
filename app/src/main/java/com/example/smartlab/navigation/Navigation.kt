@@ -35,17 +35,17 @@ fun Navigation(viewModel: ViewModelMain) {
         composable(RoutesScreens.LOGIN) {
             LogIn(navController, viewModel)
         }
-        composable(RoutesScreens.CODEEMAIL) {
+        composable(RoutesScreens.CODE_EMAIL) {
             InputCodeFromEmail(navController, viewModel)
         }
-        composable(RoutesScreens.CREATEPASSWORD) {
+        composable(RoutesScreens.CREATE_PASSWORD) {
             CreatePassword(navController)
         }
-        composable(RoutesScreens.CREATEPATIENTCARD) {
+        composable(RoutesScreens.CREATE_PATIENT_CARD) {
             CreatingPatientCard(navController)
         }
-        composable(RoutesScreens.HOMEANALYSES) {
-            HomeAnalyses(navController)
+        composable(RoutesScreens.HOME_ANALYSES) {
+            HomeAnalyses(navController, viewModel)
         }
     }
 }

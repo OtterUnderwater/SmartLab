@@ -54,6 +54,13 @@ fun SplashScreen(navController: NavHostController?) {
                     }
                 }
             }
+            if (CachePreferences.status == 2){
+                navController!!.navigate(RoutesScreens.HOME_ANALYSES) {
+                    popUpTo(RoutesScreens.SPLASH) {
+                        inclusive = true
+                    }
+                }
+            }
         }
         //Заставка
         Box(
