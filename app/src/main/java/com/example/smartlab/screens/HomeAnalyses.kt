@@ -40,10 +40,11 @@ import com.example.smartlab.viewModel.ViewModelMain
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun HomeAnalyses(navHostController: NavHostController?, viewModel: ViewModelMain?){
+fun HomeAnalyses(navHostController: NavHostController?, viewModel: ViewModelMain?) {
     //получение catalog из api
     viewModel!!.getListCatalog()
     val catalogList = viewModel!!.catalog.collectAsState().value
+
     /** объект Context — предоставляет доступ к базовым функциям приложения в Android,
     таким как доступ к ресурсам, файловой системе, вызов активности и т. д.*/
     val context = LocalContext.current
@@ -117,13 +118,13 @@ fun ItemCatalog(item: Catalog) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(GrayWhiteColor)
+            .background(GrayWhiteColor, RoundedCornerShape(12.dp))
             .clip(RoundedCornerShape(12.dp))
     ) {
         Text(
-        modifier = Modifier.padding(16.dp),
-        text = item.name,
-        fontSize = 16.sp,
+            modifier = Modifier.padding(16.dp),
+            text = item.name,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Bold
         )
         Row(
@@ -131,7 +132,7 @@ fun ItemCatalog(item: Catalog) {
                 .fillMaxWidth(1f)
                 .padding(16.dp, 0.dp, 16.dp, 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween
-        ){
+        ) {
             Column()
             {
                 Text(
@@ -151,13 +152,15 @@ fun ItemCatalog(item: Catalog) {
                 onClick = {},
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
-                   containerColor = MaterialTheme.colorScheme.primary
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             )
             {
-                Text(text = "Добавить",
+                Text(
+                    text = "Добавить",
                     fontSize = 14.sp,
-                    color = Color.White)
+                    color = Color.White
+                )
             }
         }
     }
@@ -167,6 +170,6 @@ fun ItemCatalog(item: Catalog) {
 @Composable
 private fun Preview() {
     SmartLabTheme {
-        HomeAnalyses(null,null)
+        HomeAnalyses(null, null)
     }
 }

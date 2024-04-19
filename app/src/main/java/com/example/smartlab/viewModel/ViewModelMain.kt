@@ -34,10 +34,10 @@ class ViewModelMain(private val repository: Repository) : ViewModel() {
         viewModelScope.launch {
             repository.sendCodeEmail(emailStr).collect {
                 when (it) {
-                    is com.example.smartlab.api.Result.Error -> {
+                    is Result.Error -> {
                         _showErrorToastChannel.send(true)
                     }
-                    is com.example.smartlab.api.Result.Success -> {
+                    is Result.Success -> {
                         _showErrorToastChannel.send(false)
                     }
                 }
