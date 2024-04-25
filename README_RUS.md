@@ -1,5 +1,7 @@
 # Мобильное приложение SmartLab
-Разработка мобильного приложения на Jetpack Compose по [макету SmartLab](https://www.figma.com/file/IyYyYbiUKywRRhaRWSTdJJ/%D0%A1%D0%BC%D0%B0%D1%80%D1%82%D0%BB%D0%B0%D0%B1?type=design&node-id=0-1&mode=design&t=9OQNHGw8Ft0INAcD-0)
+Разработка мобильного приложения на Jetpack Compose по [макету SmartLab](https://www.figma.com/file/IyYyYbiUKywRRhaRWSTdJJ/%D0%A1%D0%BC%D0%B0%D1%80%D1%82%D0%BB%D0%B0%D0%B1?type=design&node-id=0-1&mode=design&t=9OQNHGw8Ft0INAcD-0)  
+Ссылка на [API](https://iis.ngknn.ru/NGKNN/%D0%9C%D0%B0%D0%BC%D1%88%D0%B5%D0%B2%D0%B0%D0%AE%D0%A1/MedicMadlab/swagger/index.html)
+
 
 ## Установка программы средствами Android Studio
 1. Откройте Android Studio
