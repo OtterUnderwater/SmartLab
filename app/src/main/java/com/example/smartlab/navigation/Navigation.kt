@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.smartlab.objects.RoutesScreens
+import com.example.smartlab.screens.CardProduct
 import com.example.smartlab.screens.CreatePassword
 import com.example.smartlab.screens.CreatingPatientCard
 import com.example.smartlab.screens.HomeAnalyses
@@ -46,6 +47,9 @@ fun Navigation(viewModel: ViewModelMain) {
         }
         composable(RoutesScreens.HOME_ANALYSES) {
             HomeAnalyses(navController, viewModel)
+        }
+        composable(RoutesScreens.CARD_PRODUCT) {
+            CardProduct(navController, viewModel)
         }
     }
 }

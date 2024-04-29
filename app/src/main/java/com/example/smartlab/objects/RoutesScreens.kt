@@ -11,4 +11,5 @@ object RoutesScreens {
     const val CREATE_PASSWORD = "createPassword";
     const val CREATE_PATIENT_CARD = "creatingPatientCard";
     const val HOME_ANALYSES = "homeAnalyses";
+    const val CARD_PRODUCT = "cardProduct";
 }
