@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
@@ -36,6 +38,7 @@ import com.example.smartlab.ui.theme.SmartLabTheme
 import com.example.smartlab.ui.theme.Typography
 import com.example.smartlab.viewModel.ViewModelMain
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewModelMain?) {
     //mutableStateOf() создает изменяемое состояние с нач значением
@@ -84,14 +87,15 @@ fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewMod
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .weight(25f)
-                    .height(48.dp)
-                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
-                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                    .height(48.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    containerColor = LightGrayColor,
+                    unfocusedBorderColor = GrayBorderColor
+                ),
                 shape = RoundedCornerShape(10.dp),
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
-
             OutlinedTextField(
                 value = code[1],
                 onValueChange = { newText ->
@@ -107,9 +111,11 @@ fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewMod
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .weight(25f)
-                    .height(48.dp)
-                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
-                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                    .height(48.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    containerColor = LightGrayColor,
+                    unfocusedBorderColor = GrayBorderColor
+                ),
                 shape = RoundedCornerShape(10.dp),
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -129,9 +135,11 @@ fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewMod
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .weight(25f)
-                    .height(48.dp)
-                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
-                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                    .height(48.dp),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                        containerColor = LightGrayColor,
+                unfocusedBorderColor = GrayBorderColor
+            ),
                 shape = RoundedCornerShape(10.dp),
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -152,9 +160,11 @@ fun InputCodeFromEmail(navHostController: NavHostController?, viewModel: ViewMod
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .weight(25f)
-                    .height(48.dp)
-                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
-                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                    .height(48.dp),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    containerColor = LightGrayColor,
+                    unfocusedBorderColor = GrayBorderColor
+                ),
                 shape = RoundedCornerShape(10.dp),
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)

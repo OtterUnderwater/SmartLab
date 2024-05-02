@@ -1,8 +1,6 @@
 package com.example.smartlab.screens
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,17 +35,17 @@ import com.example.smartlab.ui.theme.LightGrayColor
 import com.example.smartlab.ui.theme.SmartLabTheme
 import com.example.smartlab.viewModel.ViewModelMain
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LogIn(navHostController: NavHostController?, viewModel: ViewModelMain?) {
     //remember сохраняет значение во время перерисовки экрана
     //rememberSaveable сохраняет состояние еще и при перезапуске приложения
     //mutableStateOf() создает изменяемое состояние с нач значением
-    //пишу by вместо = чтобы вместо email.value писать email
+    //by вместо = чтобы вместо email.value писать email
     var email by rememberSaveable { mutableStateOf("") }
     Column(
-        verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
-            .fillMaxSize(1f)
+            .fillMaxSize(5f)
             .padding(20.dp, 100.dp)
     )
     {
@@ -80,9 +80,12 @@ fun LogIn(navHostController: NavHostController?, viewModel: ViewModelMain?) {
                     style = TextStyle(color = Color.Gray))
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .background(LightGrayColor, shape = RoundedCornerShape(8.dp))
-                    .border(0.dp, GrayBorderColor, shape = RoundedCornerShape(8.dp)),
+                    .fillMaxWidth(),
+                //Изменение цвета контейнера и рамки
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    containerColor = LightGrayColor,
+                    unfocusedBorderColor = GrayBorderColor
+                ),
                 shape = RoundedCornerShape(10.dp),
                 maxLines = 1,
                 singleLine = true
